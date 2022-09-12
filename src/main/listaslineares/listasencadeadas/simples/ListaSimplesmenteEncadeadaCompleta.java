@@ -1,12 +1,11 @@
 package listasencadeadas.simples;
 
-public class ListaSimplesmenteEncadeada {
-
+public class ListaSimplesmenteEncadeadaCompleta {
     private Nodo inicio;
     private Nodo fim;
     private int quantidade;
 
-    public ListaSimplesmenteEncadeada() {
+    public ListaSimplesmenteEncadeadaCompleta() {
         inicio = null;
         fim = null;
         quantidade = 0;
@@ -34,6 +33,8 @@ public class ListaSimplesmenteEncadeada {
         if(posicao==0) { //inserindo no inicio
             novoNodo.proximo = this.inicio;
             this.inicio = novoNodo;
+            //this.inicio = novoNodo;
+            //this.fim = novoNodo;
             quantidade++;
         }
         else if (posicao==quantidade-1) { //insere no final
@@ -69,7 +70,7 @@ public class ListaSimplesmenteEncadeada {
         return paux.elemento;
     }
 
-    public void escrever(int posicao, int elemento) {
+    public void escrever(int elemento) {
         //implementar
     }
 
@@ -89,18 +90,13 @@ public class ListaSimplesmenteEncadeada {
         //indexOf metodo
         //retorna a posicao na lista do elemento ou -1 se nao existir
         Nodo paux = this.inicio;
-        int posicao = 0;
-        if(paux.elemento==elemento) return posicao;
-        while(paux.proximo!=null) {
-            posicao++;
-            paux = paux.proximo;
-            if(paux.elemento==elemento) {
-                return posicao;
-            }
+        for (int posicao = 0; posicao < this.quantidade; posicao++) {
+            if(paux.elemento==elemento) return posicao;
+            paux = paux.proximo; //remover para exercicio
         }
         return -1;
-
     }
+
     @Override
     public String toString() {
         String aux = "[ ";
